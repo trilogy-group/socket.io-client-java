@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BackoffTest {
 
@@ -13,15 +13,14 @@ public class BackoffTest {
     public void durationShouldIncreaseTheBackoff() {
         Backoff b = new Backoff();
 
-        assertTrue(100 == b.duration());
-        assertTrue(200 == b.duration());
-        assertTrue(400 == b.duration());
-        assertTrue(800 == b.duration());
+        assertEquals(100, b.duration(), "Duration should be 100");
+        assertEquals(200, b.duration(), "Duration should be 200");
+        assertEquals(400, b.duration(), "Duration should be 400");
+        assertEquals(800, b.duration(), "Duration should be 800");
 
         b.reset();
-        assertTrue(100 == b.duration());
-        assertTrue(200 == b.duration());
-    }
+        assertEquals(100, b.duration(), "Duration should be 100 after reset");
+        assertEquals(200, b.duration(), "Duration should be 200 after reset");
 
     @Test
     public void durationOverflow() {
@@ -37,9 +36,8 @@ public class BackoffTest {
                 BigInteger min = ms.subtract(deviation).min(BigInteger.valueOf(10000));
 
                 BigInteger max = ms.add(deviation).min(BigInteger.valueOf(10001));
-                assertTrue(min + " <= " + duration + " < " + max,
-                        min.compareTo(duration) <= 0 && max.compareTo(duration) == 1);
-            });
+                assertTrue(min.compareTo(duration) <= 0 && max.compareTo(duration) == 1,
+                        min + " <= " + duration + " < " + max);
         });
     }
     }
