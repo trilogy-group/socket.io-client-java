@@ -22,7 +22,7 @@ public class BackoffTest {
         assertEquals(100, b.duration(), "Duration should be 100 after reset");
         assertEquals(200, b.duration(), "Duration should be 200 after reset");
 
-    @Test
+    }
     public void testBackoffWithJitter() {
         IntStream.range(0, 10).forEach(i -> {
         IntStream.range(0, 10).forEach(i -> {
@@ -43,10 +43,9 @@ public class BackoffTest {
             });
         });
     }
-    }
+    @Test
     public void testInvalidJitter() {
         Backoff b = new Backoff();
         b.setJitter(2);
-    }
     }
 }
