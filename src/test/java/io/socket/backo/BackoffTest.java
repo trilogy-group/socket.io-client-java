@@ -23,7 +23,7 @@ public class BackoffTest {
         assertEquals(200, b.duration(), "Duration should be 200 after reset");
 
     @Test
-    public void durationOverflow() {
+        IntStream.range(0, 10).forEach(i -> {;
         IntStream.range(0, 10).forEach(i -> {
             Backoff b = new Backoff();
             b.setMin(100);
@@ -39,12 +39,12 @@ public class BackoffTest {
                 assertTrue(min.compareTo(duration) <= 0 && max.compareTo(duration) == 1,
                         min + " <= " + duration + " < " + max);
         });
+        });
     }
     }
-}
 
     @Test(expected = IllegalArgumentException.class)
-    public void ensureJitterIsValid() {
+        b.setJitter(2);
         Backoff b = new Backoff();
         b.setJitter(2);
     }
