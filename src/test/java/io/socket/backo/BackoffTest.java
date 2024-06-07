@@ -1,10 +1,10 @@
 package io.socket.backo;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
+import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BackoffTest {
